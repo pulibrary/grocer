@@ -9,6 +9,15 @@
   </head>
 
   <body>
+    <div class="flash-message">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+
     <%= yield %>
+
+    <div class="footer">
+      <p><%= link_to 'Log Out', destroy_user_session_path %></p>
+    </div>
   </body>
 </html>
