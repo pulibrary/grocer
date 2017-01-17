@@ -1,0 +1,10 @@
+machine:
+  ruby:
+    version: 2.3.3
+test:
+  post:
+    - COVERALLS_PARALLEL=true bundle exec rake coveralls:push:
+        parallel: true
+notify:
+  webhooks:
+    - url: https://coveralls.io/webhook?repo_token=$COVERALLS_TOKEN
