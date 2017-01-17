@@ -3,4 +3,7 @@
 
 require_relative 'config/application'
 
+require 'coveralls/rake/task'
+Coveralls::RakeTask.new
+
 Rails.application.load_tasks
