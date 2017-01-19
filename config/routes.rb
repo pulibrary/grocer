@@ -1,6 +1,4 @@
 Grocer::Engine.routes.draw do
-  namespace :grocer do
-    resources :exports
-  end
+  resources :exports
   root to: 'home#index'
 end

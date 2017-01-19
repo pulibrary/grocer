@@ -43,3 +43,5 @@ else
   end
 end
 # END ENGINE_CART BLOCK
+
+gem 'rails-controller-testing' if !ENV['RAILS_VERSION'] || ENV['RAILS_VERSION'] =~ /^5\./
