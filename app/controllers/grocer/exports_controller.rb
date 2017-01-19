@@ -9,8 +9,7 @@ class Grocer::ExportsController < ApplicationController
 
   # GET /grocer/exports/1
   # GET /grocer/exports/1.json
-  def show
-  end
+  def show; end
 
   # GET /grocer/exports/new
   def new
@@ -18,8 +17,7 @@ class Grocer::ExportsController < ApplicationController
   end
 
   # GET /grocer/exports/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /grocer/exports
   # POST /grocer/exports.json
@@ -62,13 +60,14 @@ class Grocer::ExportsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_grocer_export
-      @grocer_export = Grocer::Export.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def grocer_export_params
-      params.require(:grocer_export).permit(:pid, :job, :status, :last_error, :last_success, :logfile)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_grocer_export
+    @grocer_export = Grocer::Export.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def grocer_export_params
+    params.require(:grocer_export).permit(:pid, :job, :status, :last_error, :last_success, :logfile)
+  end
 end
