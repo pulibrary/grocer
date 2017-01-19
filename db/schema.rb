@@ -12,4 +12,16 @@
 
 ActiveRecord::Schema.define(version: 0) do
 
+  create_table "grocer_exports", force: :cascade do |t|
+    t.string   "pid"
+    t.integer  "job"
+    t.string   "status"
+    t.datetime "last_error"
+    t.datetime "last_success"
+    t.string   "logfile"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["pid"], name: "index_grocer_exports_on_pid", unique: true
+  end
+
 end
