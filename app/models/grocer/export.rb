@@ -1,2 +1,4 @@
-class Grocer::Export < ApplicationRecord
+module Grocer
+  class Export < ApplicationRecord
+  end
 end

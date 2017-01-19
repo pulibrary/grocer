@@ -107,20 +107,23 @@ RSpec.describe Grocer::ExportsController, type: :controller do
 
       it 'updates the requested grocer_export' do
         export = Grocer::Export.create! valid_attributes
-        put :update, params: { id: export.to_param, grocer_export: new_attributes }, session: valid_session
+        put :update, params: { id: export.to_param, grocer_export: new_attributes },
+                     session: valid_session
         export.reload
         skip('Add assertions for updated state')
       end
 
       it 'assigns the requested grocer_export as @grocer_export' do
         export = Grocer::Export.create! valid_attributes
-        put :update, params: { id: export.to_param, grocer_export: valid_attributes }, session: valid_session
+        put :update, params: { id: export.to_param, grocer_export: valid_attributes },
+                     session: valid_session
         expect(assigns(:grocer_export)).to eq(export)
       end
 
       it 'redirects to the grocer_export' do
         export = Grocer::Export.create! valid_attributes
-        put :update, params: { id: export.to_param, grocer_export: valid_attributes }, session: valid_session
+        put :update, params: { id: export.to_param, grocer_export: valid_attributes },
+                     session: valid_session
         expect(response).to redirect_to(export)
       end
     end
@@ -128,13 +131,15 @@ RSpec.describe Grocer::ExportsController, type: :controller do
     context 'with invalid params' do
       it 'assigns the grocer_export as @grocer_export' do
         export = Grocer::Export.create! valid_attributes
-        put :update, params: { id: export.to_param, grocer_export: invalid_attributes }, session: valid_session
+        put :update, params: { id: export.to_param, grocer_export: invalid_attributes },
+                     session: valid_session
         expect(assigns(:grocer_export)).to eq(export)
       end
 
       it "re-renders the 'edit' template" do
         export = Grocer::Export.create! valid_attributes
-        put :update, params: { id: export.to_param, grocer_export: invalid_attributes }, session: valid_session
+        put :update, params: { id: export.to_param, grocer_export: invalid_attributes },
+                     session: valid_session
         expect(response).to render_template('edit')
       end
     end

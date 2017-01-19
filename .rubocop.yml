@@ -12,8 +12,15 @@ AllCops:
 Rails:
   Enabled: true
 
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
 Metrics/LineLength:
   Max: 100
+
+RSpec/MultipleExpectations:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
