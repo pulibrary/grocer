@@ -40,12 +40,17 @@ module Grocer
     # PATCH/PUT /grocer/exports/1.json
     def update
       respond_to do |format|
-        if @grocer_export.update(grocer_export_params)
-          format.html { redirect_to @grocer_export, notice: 'Export was successfully updated.' }
-          format.json { render :show, status: :ok, location: @grocer_export }
-        else
-          format.html { render :edit }
-          format.json { render json: @grocer_export.errors, status: :unprocessable_entity }
+        begin
+          if @grocer_export.update(grocer_export_params)
+            format.html { redirect_to @grocer_export, notice: 'Export was successfully updated.' }
+            format.json { render :show, status: :ok, location: @grocer_export }
+          else
+            format.html { render :edit }
+            format.json { render json: @grocer_export.errors, status: :unprocessable_entity }
+          end
+        rescue ActionController::ParameterMissing => e
+          format.html { redirect_to exports_url, flash: { error: "Error: #{e}" } }
+          format.json { render json: e, status: :unprocessable_entity }
         end
       end
     end
@@ -55,7 +60,7 @@ module Grocer
     def destroy
       @grocer_export.destroy
       respond_to do |format|
-        format.html { redirect_to grocer_exports_url, notice: 'Export was successfully destroyed.' }
+        format.html { redirect_to exports_url, notice: 'Export was successfully destroyed.' }
         format.json { head :no_content }
       end
     end

@@ -12,12 +12,20 @@ AllCops:
 Rails:
   Enabled: true
 
+Metrics/AbcSize:
+  Exclude:
+    - 'app/controllers/grocer/exports_controller.rb'
+
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
 
 Metrics/LineLength:
   Max: 100
+
+Metrics/MethodLength:
+  Exclude:
+    - 'app/controllers/grocer/exports_controller.rb'
 
 RSpec/MultipleExpectations:
   Enabled: false
