@@ -1,0 +1,1 @@
+json.array! @grocer_exports, partial: 'grocer_exports/grocer_export', as: :grocer_export
