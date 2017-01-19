@@ -11,6 +11,7 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
+Gemfile.lock
 
 !/log/.keep
 !/tmp/.keep
@@ -39,3 +40,5 @@ bower.json
 
 # Ignore Byebug command history file.
 .byebug_history
+
+.internal_test_app

@@ -1,7 +1,12 @@
 machine:
   ruby:
     version: 2.3.3
+database:
+  override:
+    - ls &>/dev/null
 test:
+  override:
+    - bundle exec rake ci
   post:
     - COVERALLS_PARALLEL=true bundle exec rake coveralls:push:
         parallel: true

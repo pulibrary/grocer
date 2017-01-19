@@ -3,23 +3,20 @@ AllCops:
   DisplayCopNames: true
   Include:
     - '**/Rakefile'
-    - '**/config.ru'
   Exclude:
     - 'db/**/*'
     - 'script/**/*'
     - 'vendor/**/*'
-    - 'bin/*'
-    - 'config/deploy.rb'
+    - '.internal_test_app/**/*'
 
 Rails:
   Enabled: true
-
-Rails/FilePath:
-  Exclude:
-    - 'config/environments/development.rb'
 
 Metrics/LineLength:
   Max: 100
 
 Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
   Enabled: false
