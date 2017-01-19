@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pid:</strong>
+  <%= @grocer_export.pid %>
+</p>
+
+<p>
+  <strong>Job:</strong>
+  <%= @grocer_export.job %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @grocer_export.status %>
+</p>
+
+<p>
+  <strong>Last error:</strong>
+  <%= @grocer_export.last_error %>
+</p>
+
+<p>
+  <strong>Last success:</strong>
+  <%= @grocer_export.last_success %>
+</p>
+
+<p>
+  <strong>Logfile:</strong>
+  <%= @grocer_export.logfile %>
+</p>
+
+<%= link_to 'Edit', edit_export_path(@grocer_export) %> |
+<%= link_to 'Back', exports_path %>

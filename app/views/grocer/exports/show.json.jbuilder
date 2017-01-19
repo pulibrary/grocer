@@ -1,0 +1,1 @@
+json.partial! "grocer_exports/grocer_export", grocer_export: @grocer_export
