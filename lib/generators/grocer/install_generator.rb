@@ -11,5 +11,10 @@ module Grocer
     def copy_migrations
       rake 'grocer:install:migrations'
     end
+
+    def copy_assets
+      copy_file 'grocer.scss', 'app/assets/stylesheets/grocer.scss'
+      copy_file 'grocer.js', 'app/assets/javascripts/grocer.js'
+    end
   end
 end
