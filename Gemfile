@@ -7,6 +7,8 @@ group :development, :test do
   gem 'simplecov', '~> 0.12.0', require: false
   gem 'coveralls', '~> 0.8.18', require: false
   gem 'byebug', platform: :mri
+  gem 'database_cleaner'
+  gem 'rails-controller-testing' if !ENV['RAILS_VERSION'] || ENV['RAILS_VERSION'] =~ /^5\./
 end
 
 # BEGIN ENGINE_CART BLOCK

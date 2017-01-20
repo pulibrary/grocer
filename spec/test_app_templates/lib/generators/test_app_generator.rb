@@ -10,4 +10,8 @@ class TestAppGenerator < Rails::Generators::Base
   def install_engine
     generate 'grocer:install'
   end
+
+  def run_migrations
+    rake 'db:migrate'
+  end
 end

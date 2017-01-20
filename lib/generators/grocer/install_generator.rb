@@ -7,5 +7,9 @@ module Grocer
         "  mount Grocer::Engine => '/'\n"\
       end
     end
+
+    def copy_migrations
+      rake 'grocer:install:migrations'
+    end
   end
 end

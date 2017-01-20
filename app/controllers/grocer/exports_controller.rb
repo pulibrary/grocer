@@ -1,5 +1,3 @@
-require_dependency "grocer/application_controller"
-
 module Grocer
   class ExportsController < ApplicationController
     before_action :set_export, only: [:show, :edit, :update, :destroy]
@@ -10,8 +8,7 @@ module Grocer
     end
 
     # GET /exports/1
-    def show
-    end
+    def show; end
 
     # GET /exports/new
     def new
@@ -19,8 +16,7 @@ module Grocer
     end
 
     # GET /exports/1/edit
-    def edit
-    end
+    def edit; end
 
     # POST /exports
     def create
@@ -49,14 +45,15 @@ module Grocer
     end
 
     private
-      # Use callbacks to share common setup or constraints between actions.
-      def set_export
-        @export = Export.find(params[:id])
-      end
 
-      # Only allow a trusted parameter "white list" through.
-      def export_params
-        params.require(:export).permit(:pid, :job, :status, :last_error, :last_success, :logfile)
-      end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_export
+      @export = Export.find(params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def export_params
+      params.require(:export).permit(:pid, :job, :status, :last_error, :last_success, :logfile)
+    end
   end
 end
