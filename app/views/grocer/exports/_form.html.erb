@@ -1,0 +1,47 @@
+<%= form_for(export) do |f| %>
+  <% if export.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(export.errors.count, "error") %> prohibited this export from being saved:</h2>
+
+      <ul>
+      <% export.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :pid %>
+    <%= f.text_field :pid %>
+  </div>
+
+  <div class="field">
+    <%= f.label :job %>
+    <%= f.number_field :job %>
+  </div>
+
+  <div class="field">
+    <%= f.label :status %>
+    <%= f.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_error %>
+    <%= f.datetime_select :last_error %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_success %>
+    <%= f.datetime_select :last_success %>
+  </div>
+
+  <div class="field">
+    <%= f.label :logfile %>
+    <%= f.text_field :logfile %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -21,6 +21,12 @@ Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
 ENV['RAILS_ENV'] ||= 'test'
 
 RSpec.configure do |config|
+  # clean database
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean
+  end
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
