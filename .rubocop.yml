@@ -19,6 +19,10 @@ Metrics/BlockLength:
 Metrics/LineLength:
   Max: 100
 
+RSpec/MessageChain:
+  Exclude:
+    - 'spec/jobs/grocer/export_job_spec.rb'
+
 RSpec/MultipleExpectations:
   Enabled: false
 
