@@ -31,14 +31,6 @@ RSpec.describe Grocer::ExportsController, type: :controller do
     end
   end
 
-  describe 'GET #edit' do
-    it 'assigns the requested export as @export' do
-      export = Grocer::Export.create! pid: 'pid3'
-      get :edit, params: { id: export.to_param }, session: valid_session
-      expect(assigns(:export)).to eq(export)
-    end
-  end
-
   describe 'POST #create' do
     context 'with valid params' do
       it 'creates a new Grocer::Export' do
@@ -64,57 +56,6 @@ RSpec.describe Grocer::ExportsController, type: :controller do
         post :create, params: { export: { status: 'invalid' } }, session: valid_session
         expect(response).to render_template('new')
       end
-    end
-  end
-
-  describe 'PUT #update' do
-    context 'with valid params' do
-      it 'updates the requested export' do
-        export = Grocer::Export.create! pid: 'pid7'
-        put :update, params: { id: export.to_param, export: { pid: 'pid7updated' } },
-                     session: valid_session
-        export.reload
-        expect(assigns(:export).pid).to eq('pid7updated')
-      end
-
-      it 'assigns the requested export as @export' do
-        export = Grocer::Export.create! pid: 'pid8'
-        put :update, params: { id: export.to_param, export: { pid: 'pid8' } },
-                     session: valid_session
-        expect(assigns(:export)).to eq(export)
-      end
-
-      it 'redirects to the export' do
-        export = Grocer::Export.create! pid: 'pid9'
-        put :update, params: { id: export.to_param, export: { pid: 'pid9' } },
-                     session: valid_session
-        expect(response).to redirect_to(export)
-      end
-    end
-
-    context 'with invalid params' do
-      it 'assigns the export as @export' do
-        export = Grocer::Export.create! pid: 'pid10'
-        put :update, params: { id: export.to_param, export: { pid: '' } },
-                     session: valid_session
-        expect(assigns(:export)).to eq(export)
-        expect(response).to render_template('edit')
-      end
-    end
-  end
-
-  describe 'DELETE #destroy' do
-    it 'destroys the requested grocer_export' do
-      export = Grocer::Export.create! pid: 'pid12'
-      expect do
-        delete :destroy, params: { id: export.to_param }, session: valid_session
-      end.to change(Grocer::Export, :count).by(-1)
-    end
-
-    it 'redirects to the grocer_exports list' do
-      export = Grocer::Export.create! pid: 'pid13'
-      delete :destroy, params: { id: export.to_param }, session: valid_session
-      expect(response).to redirect_to(exports_url)
     end
   end
 end

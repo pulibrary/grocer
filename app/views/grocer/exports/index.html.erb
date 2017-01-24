@@ -1,12 +1,46 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Summary</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @counts.each do |status, count| %>
+      <tr>
+        <td><%= count %></td>
+        <td>
+          <% if status == params[:status] %>
+            <b><%= status %></b>
+          <% else %>
+            <%= link_to status, exports_path(status: status)  %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    <tr>
+      <th><%= Grocer::Export.count %></th>
+      <th>
+        <% if params[:status] %>
+          <%= link_to 'all', exports_path %>
+        <% else %>
+          all
+        <% end %>
+      </th>
+    </tr>
+  </tbody>
+</table>
+
 <h1>Exports</h1>
 
 <table>
   <thead>
     <tr>
       <th>Pid</th>
-      <th>Job</th>
       <th>Status</th>
       <th>Last error</th>
       <th>Last success</th>
@@ -19,14 +53,14 @@
     <% @exports.each do |export| %>
       <tr>
         <td><%= export.pid %></td>
-        <td><%= export.job %></td>
-        <td><%= export.status %></td>
+        <td>
+          <%= export.status %>
+          <% if export.job %>(<%= export.job %>)<% end %>
+        </td>
         <td><%= export.last_error %></td>
         <td><%= export.last_success %></td>
         <td><%= export.logfile %></td>
         <td><%= link_to 'Show', export %></td>
-        <td><%= link_to 'Edit', edit_export_path(export) %></td>
-        <td><%= link_to 'Destroy', export, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +68,5 @@
 
 <br>
 
+<%= paginate @exports %>
 <%= link_to 'New Export', new_export_path %>

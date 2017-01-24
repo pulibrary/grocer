@@ -1,0 +1,2 @@
+# extra requirements for applications Gemfiles
+gem 'kaminari'
