@@ -26,6 +26,10 @@ RSpec/MessageChain:
 RSpec/MultipleExpectations:
   Enabled: false
 
+RSpec/VerifiedDoubles:
+  Exclude:
+    - 'spec/services/grocer/export_object_spec.rb'
+
 Style/Documentation:
   Enabled: false
 
