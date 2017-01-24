@@ -34,18 +34,21 @@ RSpec.describe Grocer::ExportsController, type: :controller do
   describe 'POST #create' do
     context 'with valid params' do
       it 'creates a new Grocer::Export' do
+        allow(Grocer::ExportJob).to receive(:perform_later).with('pid4', 'ark4')
         expect do
-          post :create, params: { export: { pid: 'pid4' } }, session: valid_session
+          post :create, params: { export: { pid: 'pid4', ark: 'ark4' } }, session: valid_session
         end.to change(Grocer::Export, :count).by(1)
       end
 
       it 'assigns a newly created export as @export' do
+        allow(Grocer::ExportJob).to receive(:perform_later)
         post :create, params: { export: { pid: 'pid5' } }, session: valid_session
         expect(assigns(:export)).to be_a(Grocer::Export)
         expect(assigns(:export)).to be_persisted
       end
 
       it 'redirects to the created export' do
+        allow(Grocer::ExportJob).to receive(:perform_later)
         post :create, params: { export: { pid: 'pid6' } }, session: valid_session
         expect(response).to redirect_to(Grocer::Export.last)
       end

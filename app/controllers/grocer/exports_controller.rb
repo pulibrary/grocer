@@ -21,6 +21,7 @@ module Grocer
       @export = Export.new(export_params)
 
       if @export.save
+        Grocer::ExportJob.perform_later(@export.pid, @export.ark)
         redirect_to @export, notice: 'Export was successfully created.'
       else
         render :new
@@ -37,7 +38,7 @@ module Grocer
     # Only allow a trusted parameter "white list" through.
     def export_params
       params.require(:export).permit(:pid, :job, :status, :last_error, :last_success, :logfile,
-                                     :page)
+                                     :page, :ark)
     end
 
     def page
