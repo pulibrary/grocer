@@ -1,4 +1,4 @@
 Grocer::Engine.routes.draw do
-  resources :exports
-  root to: 'home#index'
+  resources :exports, only: [:create, :index, :new, :show]
+  root to: 'exports#index'
 end

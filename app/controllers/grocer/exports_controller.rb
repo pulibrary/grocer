@@ -1,10 +1,11 @@
 module Grocer
   class ExportsController < ApplicationController
-    before_action :set_export, only: [:show, :edit, :update, :destroy]
+    before_action :set_export, only: [:show]
 
     # GET /exports
     def index
-      @exports = Export.all
+      @exports = status ? Export.where(status: status).page(page) : Export.page(page)
+      @counts = Export.group(:status).count
     end
 
     # GET /exports/1
@@ -14,9 +15,6 @@ module Grocer
     def new
       @export = Export.new
     end
-
-    # GET /exports/1/edit
-    def edit; end
 
     # POST /exports
     def create
@@ -29,21 +27,6 @@ module Grocer
       end
     end
 
-    # PATCH/PUT /exports/1
-    def update
-      if @export.update(export_params)
-        redirect_to @export, notice: 'Export was successfully updated.'
-      else
-        render :edit
-      end
-    end
-
-    # DELETE /exports/1
-    def destroy
-      @export.destroy
-      redirect_to exports_url, notice: 'Export was successfully destroyed.'
-    end
-
     private
 
     # Use callbacks to share common setup or constraints between actions.
@@ -53,7 +36,16 @@ module Grocer
 
     # Only allow a trusted parameter "white list" through.
     def export_params
-      params.require(:export).permit(:pid, :job, :status, :last_error, :last_success, :logfile)
+      params.require(:export).permit(:pid, :job, :status, :last_error, :last_success, :logfile,
+                                     :page)
+    end
+
+    def page
+      params[:page]
+    end
+
+    def status
+      params[:status]
     end
   end
 end
