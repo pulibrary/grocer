@@ -33,7 +33,7 @@ module Grocer
         log ? export.error!(log.path) : export.success!
       end
     ensure
-      File.delete(meta.path)
+      File.delete(meta.path) if meta
     end
 
     def monitor_process(out, wait_thread)
