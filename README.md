@@ -1,3 +1,6 @@
+# Note: This tool is no longer being developed.  Please see [Figgy's BagIt persister](https://github.com/pulibrary/figgy/tree/master/app/adapters/bagit) for current development.
+---
+
 # grocer
 Backup manager for Fedora's produce.
 
